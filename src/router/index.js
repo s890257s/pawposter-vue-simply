@@ -11,6 +11,10 @@ const router = createRouter({
         { path: "/pets", component: () => import("@/views/PetView.vue") },
       ],
     },
+    {
+      path: "/login",
+      component: () => import("@/layouts/LoginLayout.vue"),
+    },
   ],
 });
 

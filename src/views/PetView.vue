@@ -11,46 +11,18 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import apiRequest from "@/utils/api";
+
 import PetCard from "@/components/PetCard.vue";
 
-const pets = ref([
-  {
-    id: 1,
-    name: "MAX",
-    age: 3,
-    image: "https://fakeimg.pl/200x200/?text=MAX",
-    owner: "Alice",
-  },
-  {
-    id: 2,
-    name: "LUNA",
-    age: 1,
-    image: "https://fakeimg.pl/200x200/?text=LUNA",
-    owner: "Bob",
-  },
-  {
-    id: 3,
-    name: "CHARLIE",
-    age: 5,
-    image: "https://fakeimg.pl/200x200/?text=CHARLIE",
-    owner: "Charlie",
-  },
-  {
-    id: 3,
-    name: "CHARLIE",
-    age: 5,
-    image: "https://fakeimg.pl/200x200/?text=CHARLIE",
-    owner: "Charlie",
-  },
-  {
-    id: 3,
-    name: "CHARLIE",
-    age: 5,
-    image: "https://fakeimg.pl/200x200/?text=CHARLIE",
-    owner: "Charlie",
-  },
-]);
+const pets = ref([]);
+
+onMounted(() => {
+  apiRequest({ method: "GET", url: "/pets" }).then((res) => {
+    pets.value = res.data;
+  });
+});
 </script>
 
 <style scoped></style>
