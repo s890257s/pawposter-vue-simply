@@ -5,7 +5,10 @@ const app = createApp(App);
 
 // === pinia ===
 import { createPinia } from "pinia";
-app.use(createPinia());
+import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
+const pinia = createPinia();
+pinia.use(piniaPluginPersistedstate)
+app.use(pinia);
 
 // === router ===
 import router from "./router";

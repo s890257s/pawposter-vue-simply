@@ -12,15 +12,15 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import apiRequest from "@/utils/api";
+import api from "@/utils/api";
 
 import PetCard from "@/components/PetCard.vue";
 
 const pets = ref([]);
 
 onMounted(() => {
-  apiRequest({ method: "GET", url: "/pets" }).then((res) => {
-    pets.value = res.data;
+  api({ method: "GET", url: "/peets" }).then((resp) => {
+console.log(resp)
   });
 });
 </script>

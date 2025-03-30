@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useMemberStorage } from "@/stores/useMemberStorage";
+import { usePopupStore } from "@/stores/usePopupStore";
+import { useMemberStore } from "@/stores/useMemberStore";
 
 const api = axios.create({
   baseURL: "http://localhost:8080/api",
@@ -7,27 +8,24 @@ const api = axios.create({
 });
 
 // 請求攔截器，添加 JWT Token
-api.interceptors.request.use(
-  (config) => {
-    const memberStorage = useMemberStorage();
-    const token = memberStorage.token;
+api.interceptors.request.use((config) => {
+  const memberStorage = useMemberStore();
+  const token = memberStorage.token;
 
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
   }
-);
+  return config;
+});
 
 api.interceptors.response.use(
   (response) => {
     return response;
   },
   (error) => {
-    console.log(error)
+    // console.log("ERROR",error)
+    // usePopupStore().showPopup(error);
+    alert(error)
   }
 );
 

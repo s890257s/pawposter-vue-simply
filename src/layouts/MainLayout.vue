@@ -40,6 +40,7 @@
           />
 
           <v-menu activator="parent">
+         
             <v-list density="compact" nav>
               <v-list-item
                 append-icon="mdi-cog-outline"
@@ -47,6 +48,7 @@
                 title="Settings"
               />
 
+              
               <v-list-item append-icon="mdi-logout" link title="Logout" />
             </v-list>
           </v-menu>

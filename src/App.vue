@@ -1,7 +1,10 @@
 <template>
   <router-view></router-view>
+  <BasePopup></BasePopup>
 </template>
 
-<script setup></script>
+<script setup>
+import BasePopup from './components/BasePopup.vue';
+</script>
 
 <style scoped></style>
